@@ -50,12 +50,9 @@ public class Factura implements Serializable {
 	@Column(length = 10)
 	private String estado;
 	
-	@OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cliente> cliente;
-	
-	@OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaccion> transaccion;
-	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
 
 	public Long getId() {
 		return id;
@@ -97,21 +94,14 @@ public class Factura implements Serializable {
 		this.estado = estado;
 	}
 
-	public List<Cliente> getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(List<Cliente> cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-	public List<Transaccion> getTransaccion() {
-		return transaccion;
-	}
-
-	public void setTransaccion(List<Transaccion> transaccion) {
-		this.transaccion = transaccion;
-	}
+	
 	
 
 }

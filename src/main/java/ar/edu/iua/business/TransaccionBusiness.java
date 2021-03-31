@@ -1,5 +1,6 @@
 package ar.edu.iua.business;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ public class TransaccionBusiness implements ITransaccionBusiness{
 
 	@Autowired
 	private TransaccionRepository transaccionDAO;
+	
+	ClienteBusiness clienteBusiness; 
+	FacturaBusiness facturaBusiness; 
 
 	@Override
 	public Transaccion load(Long id) throws NotFoundException, BusinessException {
@@ -28,7 +32,7 @@ public class TransaccionBusiness implements ITransaccionBusiness{
 			throw new BusinessException(e);
 		}
 		if(!op.isPresent()) {
-			throw new NotFoundException("El producto con id "+id+" no se encuentra en la BD");
+			throw new NotFoundException("La transaccion con id "+id+" no se encuentra en la BD");
 		}
 		return op.get();
 	}
@@ -50,5 +54,7 @@ public class TransaccionBusiness implements ITransaccionBusiness{
 			throw new BusinessException(e);
 		}
 	}
+
+	
 
 }

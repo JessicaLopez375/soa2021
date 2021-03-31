@@ -1,5 +1,6 @@
 package ar.edu.iua.business;
 
+import java.util.Date;
 import java.util.List;
 
 import ar.edu.iua.business.exception.BusinessException;
@@ -13,4 +14,6 @@ public interface ITransaccionBusiness {
 	public List<Transaccion> list() throws BusinessException;
 	
 	public Transaccion add(Transaccion transaccion) throws BusinessException;
+	
+	
 }

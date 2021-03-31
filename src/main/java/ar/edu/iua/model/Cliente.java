@@ -47,72 +47,50 @@ public class Cliente implements Serializable {
 	@Column(length = 50)
 	private String mail;
 	
-	
-	@ManyToOne()
-    @JoinColumn(name = "factura")
-    private Factura factura;
-	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaccion> transaccion;
-
+	@OneToMany(targetEntity = Factura.class, mappedBy = "cliente", fetch = FetchType.LAZY)
+	private List<Factura> facturaList;
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	public String getApellido() {
 		return apellido;
 	}
 
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 
 	public String getMail() {
 		return mail;
 	}
 
-
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
-
-	public Factura getFactura() {
-		return factura;
+	public List<Factura> getFacturaList() {
+		return facturaList;
 	}
 
-
-	public void setFactura(Factura factura) {
-		this.factura = factura;
+	public void setFacturaList(List<Factura> facturaList) {
+		this.facturaList = facturaList;
 	}
-
-
-	public List<Transaccion> getTransaccion() {
-		return transaccion;
-	}
-
-
-	public void setTransaccion(List<Transaccion> transaccion) {
-		this.transaccion = transaccion;
-	}
+	
+	
+	
 	
 }

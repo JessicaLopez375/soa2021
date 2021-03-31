@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -42,12 +43,12 @@ public class Transaccion implements Serializable {
 	private Date fechaEmision;
 	
 	
-	@ManyToOne()
+	@OneToOne
     @JoinColumn(name = "cliente")
     private Cliente cliente;
 
 	
-	@ManyToOne()
+	@OneToOne
     @JoinColumn(name = "factura")
     private Factura factura;
 
@@ -91,6 +92,7 @@ public class Transaccion implements Serializable {
 		this.factura = factura;
 	}
 
+	
 
 		
 
